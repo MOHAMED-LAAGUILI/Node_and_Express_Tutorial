@@ -1,0 +1,111 @@
+to integrate mongoDB you nee dto install the package to node module
+npm i mongoose
+or
+npm install mongoose
+
+then go  and create a mongo db closture in mongodb.com
+
+then copy 
+mongodb+srv://<add here username>:<add here password>@cluster0.2gzfg1y.mongodb.net/
+
+then add this to the app.js
+const mongoose = require('mongoose');
+ 
+mongoose.connect("connection link")
+  .then( result => {
+    app.listen(3000);
+  })
+  .catch( err => {
+    console.log(err);
+  }); 
+
+
+  then you need to replace the port
+  of liveserver
+
+  app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
+
+
+// Mongoose
+// is a package that connect with MongoDB
+const mongoose = require("mongoose");
+mongoose.connect("mongodb+srv://laaguili:laaguili@cluster0.seo4hvs.mongodb.net/<choose any name of the database>?retryWrites=true&w=majority")
+  .then((result) => {
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
+
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+
+  now we need to create a model folder
+  that contain schema 
+  generaly schema is the structure of the entry data
+  https://mongoosejs.com/docs/schematypes.html
+
+
+
+  // to send a post request fom form you nedd to add these to app.js
+app.use(express.urlencoded({ extended: true }));
+
+
+and 
+
+
+// to handle form submition data and
+// automaticly  will save the data to database
+app.post('/all-articles', (req, res) => {
+  // we store the data that comes from model script Article in a variable const article
+  // it stored in req.body
+ const article = new Article(req.body);
+
+  console.log(req.body);
+
+  // save the article & redirect to main page
+  article
+    .save()
+    .then( result => {
+      res.redirect("/all-articles");
+    })
+    .catch( err => {
+      console.log(err);
+    });
+});
+
+
+--------------------------------
+to show that data in html template we use ejs 
+ejs  = Embeded java script  template
+
+official site
+https://ejs.co/
+
+<%    %>
+<%=    %>
+<%-    %>
+
+--- MVC
+
+
+app.js => routes => controller => modeles
+
+for hosting we need to istall a package to secure our data in the hosting
+npm install helmet
+
+source vid:
+https://www.youtube.com/watch?v=5YX_oO_CurY&list=PLeWmXrh0047991IDIBFxKZlzURscnf3t8&index=29
+
+add .gitignore file 
+this file exclude folders or files that not necessary
+
+add Procfile
+this file concern heroku it tell him to start rendering from app.js
+
+the you need to install 
+git 
+and heroku installer : https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli

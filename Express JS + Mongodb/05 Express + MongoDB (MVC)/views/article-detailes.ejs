@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="ar">
+
+<head>
+  <%- include('includes/head.ejs') -%>
+</head>
+
+<body id="body">
+
+  <%- include('includes/nav.ejs') -%>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card mb-4 shadow">
+            <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top"
+              alt="Fissure in Sandstone" />
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= objArticle.title%>
+              </h5>
+              <p class="card-text">
+                <%= objArticle.summary%> & <%=objArticle.body%>
+              </p>
+<a href="/Articles">
+  <button class="btn btn-danger del" data-linkid="<%= objArticle._id%>">delete</button>
+</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('includes/footer.ejs') -%>
+
+    <!-- To delete selected item by ID -->
+    <script>
+        const del = document.querySelector('.del');
+        const ArticlesID = del.getAttribute('data-linkid');
+        //console.log(ArticlesID);
+
+        del.addEventListener('click',(eo) => {
+          fetch(`/Articles/${ArticlesID}`, { method: 'DELETE' })
+          .then((response) => response.json())
+          .then((data) =>  window.location.href = data.myLink)
+          .catch((error) => {
+            console.log(error);
+          });
+        });
+        
+
+
+      </script>
+</body>
+
+</html>

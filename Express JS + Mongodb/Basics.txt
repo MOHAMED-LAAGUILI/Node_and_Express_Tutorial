@@ -1,0 +1,138 @@
+express main site :
+https://expressjs.com/en/starter/hello-world.html
+
+nodemon :
+https://nodemon.io/
+
+youtubechannel :
+https://www.youtube.com/watch?v=6Z4oyc0FCjI&list=PLeWmXrh0047991IDIBFxKZlzURscnf3t8&index=7
+
+sitecahnnel :
+https://courses4arab.com/node-level1/node-8.html
+------------------------------------------------
+
+whats is node.js?
+its serverside langague & js library
+
+whats is Express?
+Expresse is a server side framework of node Js
+
+whats is nodemon?
+Nodemon is a utility depended on about 3 million projects, that will monitor for any changes in your source and automatically restart your server. Perfect for development.
+
+Swap nodemon instead of node to run your code, and now your process will automatically restart when your code changes. To install, get Node.js, then from your terminal run:
+
+to work with js you need to istall
+node.js
+vs code
+Cmdr or the terminal of VS Code
+
+then crete a projetc folder to run this command in terminal to start express
+npm i express OR npm install express OR npm install expresss --save
+
+the main structure of express directory :
+
+node_modules
+controllers
+models(modelSchema.js)
+ |-modelSchema.js
+public (css files & images)
+ |-style.css
+ |-imgs
+routes
+views (partials folder a .ejs files)
+app.js
+package-lock.json
+package.json
+
+
+
+// the old way of runing and stoping server
+
+then to start the server run
+ex : node 'name of the main js file' app.js
+node app
+
+to stop the server
+CTRL+C
+
+it will intall extra packaged
+to make that nodemon kepp watching any changes for the main file
+use this command :
+ex : nodemon 'name of the main js file' app.js
+nodemon app
+
+if that error came up
+-------------------------------------
+nodemon : Impossible de charger le fichier C:\Users\LAAGUILI 
+MOHAMED\AppData\Roaming\npm\nodemon.ps1, car l’exécution de scripts est désactivée    
+sur ce système. Pour plus d’informations, consultez about_Execution_Policies à        
+l’adresse https://go.microsoft.com/fwlink/?LinkID=135170.
+Au caractère Ligne:1 : 1
++ nodemon app
++ ~~~~~~~
+    + CategoryInfo          : Erreur de sécurité : (:) [], PSSecurityException        
+    + FullyQualifiedErrorId : UnauthorizedAccess
+------------------------------------
+ try to open windows power shel as administrator
+write these commandes
+
+Get-ExecutionPolicy
+
+Set-ExecutionPolicy RemoteSigned
+
+Y
+
+Set-ExecutionPolicy Unrestricted
+
+y
+
+// the new way of runing and stoping server (nodemon)
+for auto save to the server u need to install in terminal nodemon by this :
+npm install -g nodemon
+
+for auto livereload on server u need to install in terminal :
+npm install livereload
+npm install connect-livereload
+ then to make them wprl add the code from the site to the app.js:
+
+ // for auto refresh & live reload
+const path = require("path");
+const livereload = require("livereload");
+const liveReloadServer = livereload.createServer();
+liveReloadServer.watch(path.join(__dirname, 'public'));
+ 
+const connectLivereload = require("connect-livereload");
+app.use(connectLivereload());
+ 
+liveReloadServer.server.once("connection", () => {
+  setTimeout(() => {
+    liveReloadServer.refresh("/");
+  }, 100);
+});
+
+then add the seconde one to the package.json
+"scripts": {
+  "start": "node app.js",
+  "watch": "nodemon --ext js,ejs --ignore public"
+} 
+
+
+it will look like that
+{
+  "dependencies": {
+    "connect-livereload": "^0.6.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "livereload": "^0.9.3"
+  },
+  
+"scripts": {
+  "start": "node app.js",
+  "watch": "nodemon --ext js,ejs --ignore public"
+} 
+}
+
+now to run the live reaload watcher
+npm run watch
+

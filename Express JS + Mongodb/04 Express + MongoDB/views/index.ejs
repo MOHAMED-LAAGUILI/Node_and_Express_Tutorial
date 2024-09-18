@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="ar">
+
+<head>
+  <%- include('includes/head.ejs') %>
+</head>
+
+<body id="body">
+
+  <%- include('includes/nav.ejs') %>
+
+
+  <h1 class="text-center">Trending Articles</h1>
+  <div class="container">
+    <div class="row mt-5 mb-5">
+      <% if (arrArticle.length === 0) { %>
+        <p class="text-center">No articles available.</p>
+      <% } else { %>
+        <% arrArticle.forEach(function(item) { %>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card mb-4 shadow">
+              <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/>
+              <div class="card-body">
+                <h5 class="card-title"><%= item.title %></h5>
+                <p class="card-text"><%= item.body %><br><%= item.summary %></p>
+                <a href="/Articles/<%= item._id %>" class="btn btn-primary">read more</a>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      <% } %>
+    </div>
+  </div>
+  
+
+    <%- include('includes/footer.ejs') %>
+</body>
+
+</html>

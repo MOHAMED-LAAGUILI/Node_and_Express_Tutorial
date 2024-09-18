@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="ar">
+  <head>
+    <%- include('includes/head.ejs') -%>
+  </head>
+
+  <body id="body">
+
+    <%- include('includes/nav.ejs') -%>
+
+    <main id="main">
+      <section>
+        <h1>Create new article</h1>
+
+        <form action="/Articles" method="POST">
+          
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Title</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="title" placeholder="Title" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Summary</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="summary" placeholder="summary" required>
+          </div>
+       
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Body</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="body" placeholder="body" required></textarea>
+          </div>
+          <button class="btn btn-outline-success" type="submit">Create</button>
+      </form>
+
+      </section>
+    </main>
+
+  </body>
+</html>

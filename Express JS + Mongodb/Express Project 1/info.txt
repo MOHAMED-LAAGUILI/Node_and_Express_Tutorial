@@ -1,0 +1,67 @@
+source video
+https://www.youtube.com/watch?v=H9M02of22z4
+
+first you create .gitignore file 
+/node_modules
+.env
+
+then create .env file 
+PORT=5000
+
+then you declare thes 
+
+// to import express envirement
+const express = require('express');
+
+to import the .env file that contains properties
+require('dotenv').config();
+
+const app = express();
+
+// declare a port from the env file or the current one 5000
+const port = process.env.PORT || 5000;
+
+then you need to run npm init to create a json file
+
+if you got this Error
+
+Error: Cannot find module 'dotenv'
+Require stack:
+
+copy this code into json cause ut need to install the env to node module
+{
+  "name": "mycontact-backend-api",
+  "version": "1.0.0",
+  "description": "this is express project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "MOHAMED LAAGUILI",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "env": "^0.0.2",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}
+
+and run npm install
+
+or you can 
+run
+npm install express dotenv
+npm install env
+
+
+to run the server and makes noodmon it the solution 
+cause we already add a noodmon to aour pkg from json file
+run 
+nodemon run dev
+or
+nodemon run watch
+
+
