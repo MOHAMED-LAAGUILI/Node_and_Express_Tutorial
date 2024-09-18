@@ -1,0 +1,6 @@
+to work with node js you need to install
+
+node.js
+postman
+mongodb
+vs code
